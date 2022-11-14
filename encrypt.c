@@ -2,8 +2,8 @@
 #include<stdlib.h>
 int main ()
 {
-char infile[20],outfile[20],temp ;
-int ascii;
+char infile[200],outfile[200],temp ;
+char outchar;
 FILE *file1, *file2 ;
 printf("\nEnter the file name:");
 scanf("%s", infile);
@@ -22,9 +22,14 @@ else
 file2=fopen(outfile,"w");
 temp=fgetc(file1);
 while(temp!=EOF){
-    ascii=(int)temp;
-    ascii=ascii+16 ;
-    fprintf(file2,"%c",ascii);
+    outchar=(int)temp;
+    if (outchar<32){
+    outchar=(outchar-32+144);
+    }
+    else{
+        outchar=(outchar-16);
+    }
+    fprintf(file2,"%0.2x",outchar);
     temp=fgetc(file1);
 
 }
@@ -35,3 +40,4 @@ printf("\n File is encrypted %s",outfile);
 return 0;
 
 }
+

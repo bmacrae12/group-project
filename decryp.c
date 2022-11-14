@@ -2,8 +2,8 @@
 #include<stdlib.h>
 int main ()
 {
-char infile[20],outfile[20],temp ;
-int ascii;
+char infile[200],outfile[200],temp ;
+char outchar;
 FILE *file1, *file2 ;
 printf("\nEnter the file name:");
 scanf("%s", outfile);
@@ -21,8 +21,8 @@ else
 file2=fopen(infile,"r");
 temp=fgetc(file1);
 while(temp!=EOF){
-    ascii=(int)temp;
-    ascii=ascii-16 ;
+    outchar=(int)temp;
+    outchar=outchar+16 ;
     fprintf(file2,"%c",ascii);
     temp=fgetc(file1);
 
