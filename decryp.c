@@ -21,9 +21,13 @@ else
 file2=fopen(infile,"r");
 temp=fgetc(file1);
 while(temp!=EOF){
-    outchar=(int)temp;
-    outchar=outchar+16 ;
-    fprintf(file2,"%c",ascii);
+   if (outchar>127){
+    outchar=(outchar-144+32);
+    }
+    else{
+        outchar=(outchar+16);
+    }
+    fprintf(file2,"%0.2x",outchar);
     temp=fgetc(file1);
 
 }
