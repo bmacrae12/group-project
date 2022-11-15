@@ -23,10 +23,12 @@ file2=fopen(outfile,"w");
 temp=fgetc(file1);
 while(temp!=EOF){
     outchar=(int)temp;
-    if (outchar<32){
+    if (outchar<32)
+    {
     outchar=(outchar-32+144);
     }
-    else{
+    else
+    {
         outchar=(outchar-16);
     }
     fprintf(file2,"%0.2x",outchar);
